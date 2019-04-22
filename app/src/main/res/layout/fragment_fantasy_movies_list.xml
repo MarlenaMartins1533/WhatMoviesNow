@@ -6,13 +6,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".FantasyListFragment">
+        tools:context=".scenes.fantasyList.FantasyListFragment">
 
     <TextView
             android:id="@+id/section_label_fantasy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lab_fantasy"
+            android:text="@string/tab_fantasy"
             android:layout_margin="@dimen/activity_horizontal_margin">
 
     </TextView>
