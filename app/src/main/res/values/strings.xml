@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">WhatMoviesNow</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="tab_action">Ação</string>
+    <string name="tab_fantasy">Fantasia</string>
+    <string name="tab_fiction">Ficção</string>
+    <string name="tab_drama">Drama</string>
+    <string name="name_movie">Filme</string>
+</resources>
