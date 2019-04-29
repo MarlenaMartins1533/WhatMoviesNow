@@ -38,8 +38,8 @@ class MovieClient () {
                     }
                 })
         }
-}
 
+    }
         companion object {
             lateinit var instance: MovieClient
                 private set
@@ -57,4 +57,4 @@ class MovieClient () {
             }
 
         }
-    }
+}

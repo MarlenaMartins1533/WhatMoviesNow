@@ -18,7 +18,6 @@ class DramaListFragment: Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.fragment_drama_movies_list, container, false)
+        return inflater.inflate(R.layout.fragment_movie_list, container, false)
     }
 }

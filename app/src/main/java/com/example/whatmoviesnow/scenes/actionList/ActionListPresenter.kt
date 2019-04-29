@@ -4,6 +4,9 @@ import com.example.whatmoviesnow.R
 import com.example.whatmoviesnow.model.Movie
 
 class ActionListPresenter (val view:ActionList.View): ActionList.Presenter {
+    override fun onSuccess(movies: List<Movie>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
 //    override val coroutineContext: CoroutineContext = Dispatchers.Main + SupervisorJob()
 //    private var job: Job? = null
@@ -11,14 +14,13 @@ class ActionListPresenter (val view:ActionList.View): ActionList.Presenter {
 //    override fun onSuccess(movies: List<Movie>) {}
 
     override fun getList() {
-        val actionList: ArrayList<Movie> = ArrayList()
-        var title = "Velozes e Furiosos"
+        val actionList: MutableList<Movie> = mutableListOf()
 
-        arrayListOf(1, "Velozes e Furiosos", "Action")
-        arrayListOf(2, "Avengers", "Action")
-        arrayListOf(3, "Aposentados e perigosos", "Action")
+        actionList.add(Movie(1, "Velozes e Furiosos"))
+        actionList.add(Movie(2, "Avengers"))
+        actionList.add(Movie(3, "Aposentados e perigosos"))
 
-        //getList no servidor
+        //getList no servidor em MovieClient (getMovies) depois filtra por genre
         view.setList(actionList)
     }
 

@@ -6,6 +6,7 @@ import com.example.whatmoviesnow.data.Constants
 import com.example.whatmoviesnow.model.Movie
 import com.example.whatmoviesnow.model.MovieResponse
 import com.example.whatmoviesnow.scenes.Scenes
+import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,15 +15,16 @@ import retrofit2.Retrofit
 
 class MoviesRepository private constructor(private val api: MovieApi) {
 
-    fun getMovies(callback: Scenes) {
-        api.getMovies(Constants.AppId, Movie.gender, app_id)
+    fun getMovies(callback: Scenes.Presenter) {
+        api.getMovies(Constants.AppId, "gender")
+
             .enqueue(object : Callback<MovieResponse> {
 
                 fun onResponse(call: Callback<MovieResponse>, response: Response<MovieResponse>) {
                     if (response.isSuccessful()) {
                         val moviesResponse = response.body()
                         if (moviesResponse != null && moviesResponse!!.getMovies() != null) {
-                            callback.onSuccess(MovieResponse.getMovies())
+                            Call.onSuccess(MovieResponse.getMovies())
                         } else {
                             callback.onError()
                         }

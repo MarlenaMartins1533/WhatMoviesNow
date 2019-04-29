@@ -1,7 +1,6 @@
 package com.example.whatmoviesnow.scenes.actionList
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -13,7 +12,7 @@ import com.example.whatmoviesnow.R
 import com.example.whatmoviesnow.adapters.ListAdapter
 import com.example.whatmoviesnow.adapters.MovieInterface
 import com.example.whatmoviesnow.model.Movie
-import kotlinx.android.synthetic.main.fragment_action_movies_list.*
+import kotlinx.android.synthetic.main.fragment_movie_list.*
 
 class ActionListFragment: Fragment(), MovieInterface.View, ActionList.View {
 
@@ -33,8 +32,8 @@ class ActionListFragment: Fragment(), MovieInterface.View, ActionList.View {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.fragment_action_movies_list, container, false)
+//        return super.onCreateView(inflater, container, savedInstanceState)
+        return inflater.inflate(R.layout.fragment_movie_list, container, false)
     }
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,8 +43,8 @@ class ActionListFragment: Fragment(), MovieInterface.View, ActionList.View {
         adapter = ListAdapter(actionList, this)
 
         val layoutManager = LinearLayoutManager(context)
-        action_list_recycleview?.layoutManager = layoutManager
-        action_list_recycleview.adapter = adapter
+        listRV?.layoutManager = layoutManager
+        listRV.adapter = adapter
     }
 
     override fun showError(error: String) {
@@ -61,7 +60,7 @@ class ActionListFragment: Fragment(), MovieInterface.View, ActionList.View {
         presenter.getList()
     }
 
-    override fun setList(actionList: ArrayList<Movie>) {
+    override fun setList(actionList: MutableList<Movie>) {
         this.actionList.clear()
         this.actionList.addAll(actionList)
         adapter?.notifyDataSetChanged()

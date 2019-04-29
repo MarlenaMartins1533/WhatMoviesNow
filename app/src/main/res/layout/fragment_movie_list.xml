@@ -6,20 +6,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".scenes.fictionList.FictionListFragment">
-    <!--tools:context=".MainActivity$PlaceholderFragment">-->
+        tools:context=".scenes.actionList.ActionListFragment">
+        <!--tools:context=".MainActivity$PlaceholderFragment">-->
 
     <TextView
-            android:id="@+id/section_label_fiction"
+            android:id="@+id/section_labelTXT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tab_fiction"
             android:layout_margin="@dimen/activity_horizontal_margin">
-
     </TextView>
 
     <android.support.v7.widget.RecyclerView
-            android:id="@+id/fiction_list_recycleview"
+            android:id="@+id/listRV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
     </android.support.v7.widget.RecyclerView>

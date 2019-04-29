@@ -13,12 +13,5 @@ class MovieResponse {
     fun getMovies(): List<Movie>? { return movies }
 
     fun setMovies(movies: List<Movie>) { this.movies = movies }
-
-//    fun getGenres(): List<Genre>? {
-//        return genres
-//    }
-//
-//    fun setGenres(genres: List<Genre>) {
-//        this.genres = genres
-//    }
+    
 }

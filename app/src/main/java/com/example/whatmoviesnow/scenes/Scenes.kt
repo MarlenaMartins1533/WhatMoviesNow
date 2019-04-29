@@ -11,7 +11,7 @@ interface Scenes { //OnGetMoviesCallback
         }
 
         interface Presenter{
-//                fun onSuccess(movies: List<Movie>)
+                fun onSuccess(movies: List<Movie>)
                 fun onError()
         }
 }

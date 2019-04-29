@@ -7,7 +7,7 @@ import com.example.whatmoviesnow.scenes.Scenes
 interface ActionList {
 
     interface View: Scenes.View {
-        fun setList(actionList: ArrayList<Movie>)
+        fun setList(actionList: MutableList<Movie>)
     }
 
     interface Presenter: Scenes.Presenter {
