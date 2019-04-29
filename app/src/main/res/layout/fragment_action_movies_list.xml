@@ -6,14 +6,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ActionListFragment">
+        tools:context=".scenes.actionList.ActionListFragment">
         <!--tools:context=".MainActivity$PlaceholderFragment">-->
 
     <TextView
             android:id="@+id/section_label_action"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lab_action"
+            android:text="@string/tab_action"
             android:layout_margin="@dimen/activity_horizontal_margin">
     </TextView>
 
