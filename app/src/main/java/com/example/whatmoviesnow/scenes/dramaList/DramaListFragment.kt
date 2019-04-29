@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.whatmoviesnow.R
 
 class DramaListFragment: Fragment() {
-    
+
     companion object {
         fun newInstance(): DramaListFragment { return DramaListFragment() }
     }
