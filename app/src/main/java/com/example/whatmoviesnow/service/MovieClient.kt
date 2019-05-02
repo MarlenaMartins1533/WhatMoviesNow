@@ -1,60 +1,46 @@
 package com.example.whatmoviesnow.service
 
+import android.util.Log
 import com.example.whatmoviesnow.data.Constants
 import com.example.whatmoviesnow.model.MovieResponse
-import com.example.whatmoviesnow.scenes.Scenes
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Retrofit
+import java.io.IOException
 
-class MovieClient () {
+class MovieClient {
+
+    companion object {
+        lateinit var instance: MovieClient
+        private set
+
+        fun initialize() {
+            instance = MovieClient()
+            instance.retrofit = Retrofit.Builder()
+                .baseUrl(Constants.BaseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(MovieApi::class.java)
+        }
+    }
 
     private lateinit var retrofit: MovieApi
 
-    private fun MovieClient (api_key: MovieApi) {
+    fun getPopularMovies(apiKey: String, language: String, page: Int): MovieResponse? {
+        val call = retrofit.getPopularMovies("b7998e0023a9f2977d5569934f9d82f1", "LANGUAGE", 1)
 
-        this.api = MovieApi
-
-        fun getMovies(callback: Scenes) {
-            api.getPopularMovies(Constants.AppId, 1)
-                .enqueue(object : Callback<MovieResponse>() {
-                    fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
-                        if (response.isSuccessful()) {
-                            val MovieResponse = response.body()
-                            if (MovieResponse != null && MovieResponse!!.getMovies() != null) {
-                                callback.onSuccess(MovieResponse!!.getMovies())
-                            } else {
-                                callback.onError()
-                            }
-                        } else {
-                            callback.onError()
-                        }
-                    }
-
-                    fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-                        callback.onError()
-                    }
-                })
-        }
-
-    }
-        companion object {
-            lateinit var instance: MovieClient
-                private set
-
-            fun initialize(): MovieClient {
-                instance = MovieClient()
-                instance.retrofit = Retrofit.Builder()
-                    .baseUrl(Constants.BaseUrl)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-                    .create(MovieApi::class.java)
-
-                instance = MovieClient(retrofit.create(MovieApi::class.java))
-                return instance
+        try {
+            val response = call.execute()
+            if (response.isSuccessful) {
+                Log.d("LENA", "getMovieData successful: ${response.body()?.toString()}")
+                return response.body()
+            } else {
+                Log.d("LENA", "getMovieData Response Error: ${response.errorBody()?.toString()}")
             }
-
+        } catch (e: IOException) {
+            Log.e("LENA", e.message)
+        } catch (e: RuntimeException) {
+            Log.e("LENA", e.message)
         }
+        return null
+    }
 }

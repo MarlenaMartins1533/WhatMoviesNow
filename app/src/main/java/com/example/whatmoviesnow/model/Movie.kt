@@ -13,7 +13,7 @@ class Movie {
     @SerializedName("genre_ids")
     var genreIds: Int? = null
 
-    var seeDetais: Boolean = false
+    var seeDetails: Boolean = false
 
     constructor()
     constructor(movie_id: Int, movie_title: String) {

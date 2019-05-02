@@ -1,7 +1,5 @@
 package com.example.whatmoviesnow.service
 
-
-import com.example.whatmoviesnow.data.Constants
 import com.example.whatmoviesnow.model.MovieResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -11,13 +9,14 @@ interface MovieApi {
 
         @GET("movie/popular")
 
-        fun getMovies(
-            @Query(Constants.AppId) apiKey: String,
-            @Query("gender") gender: String): Call<MovieResponse>
+        fun getPopularMovies(
+            @Query("api_key") apiKey: String,
+            @Query("language") language: String,
+            @Query("page")page: Int): Call<MovieResponse>
 
 
-        @GET("genre/movie/list")
-
-        fun getGenre(
-            @Query(Constants.AppId) apiKey: String): Call<MovieResponse>
+//        @GET("genre/movie/list")
+//
+//        fun getGenre(
+//            @Query(Constants.AppId) apiKey: String): Call<MovieResponse>
 }

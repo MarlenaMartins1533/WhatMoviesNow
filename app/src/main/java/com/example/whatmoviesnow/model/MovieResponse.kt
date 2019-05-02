@@ -10,8 +10,4 @@ class MovieResponse {
     @Expose
     private var movies: List<Movie>? = null
 
-    fun getMovies(): List<Movie>? { return movies }
-
-    fun setMovies(movies: List<Movie>) { this.movies = movies }
-    
 }

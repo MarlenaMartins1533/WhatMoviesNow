@@ -33,16 +33,14 @@ class ListAdapter (private val movies: List<Movie>, //pegar dependendo da tab(ac
         fun bindView(movie: Movie) {
             itemView.movie_titleTXT.text = movie.movie_title
 
-            itemView.itemCV.setOnClickListener {
-                if (!movie.seeDetais) {
-
-                   // itemView.movie_descriptionTXT.visibility = View.VISIBLE
-                    movie.seeDetais = true
-//                } else { movie.seeDetais = false
-//                    itemView.movie_descriptionTXT.visibility = View.GONE
+//          itemView.itemCV.setOnClickListener {
+//                if (!movie.seeDetails) {
 //
-                }
-            }
+//                   // itemView.movie_descriptionTXT.visibility = View.VISIBLE
+//                    movie.seeDetails = true
+////                } else { movie.seeDetails = false
+////                    itemView.movie_descriptionTXT.visibility = View.GONE
+//                  }
         }
     }
 }

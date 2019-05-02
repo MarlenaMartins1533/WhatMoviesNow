@@ -16,7 +16,6 @@ import kotlinx.android.synthetic.main.fragment_movie_list.*
 
 class ActionListFragment: Fragment(), MovieInterface.View, ActionList.View {
 
-
     companion object {
         fun newInstance(): ActionListFragment { return ActionListFragment() }
     }
@@ -32,7 +31,6 @@ class ActionListFragment: Fragment(), MovieInterface.View, ActionList.View {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        return super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.fragment_movie_list, container, false)
     }
     
@@ -65,14 +63,8 @@ class ActionListFragment: Fragment(), MovieInterface.View, ActionList.View {
         this.actionList.addAll(actionList)
         adapter?.notifyDataSetChanged()
     }
-
     override fun onDestroy() {
         presenter.kill()
         super.onDestroy()
     }
 }
-//    private fun goToAddMovieListActivity() {
-//        val intent = Intent(context, AddMovieActivity::class.java)
-////        startActivityForResult(intent, ADDCONTACT_CODE)
-//        startActivity(intent)
-//    }
