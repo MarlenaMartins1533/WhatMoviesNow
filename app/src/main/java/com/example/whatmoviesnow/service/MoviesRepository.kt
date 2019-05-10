@@ -1,9 +1,7 @@
-package com.example.whatmoviesnow.service
+//package com.example.whatmoviesnow.service
 //
 //import org.junit.experimental.results.ResultMatchers.isSuccessful
-//import android.support.annotation.NonNull
 //import com.example.whatmoviesnow.data.Constants
-//import com.example.whatmoviesnow.model.Movie
 //import com.example.whatmoviesnow.model.MovieResponse
 //import com.example.whatmoviesnow.scenes.Scenes
 //import retrofit2.Call
