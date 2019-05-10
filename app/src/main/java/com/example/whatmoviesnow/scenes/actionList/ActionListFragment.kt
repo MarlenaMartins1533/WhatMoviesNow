@@ -58,10 +58,12 @@ class ActionListFragment: Fragment(), MovieInterface.View, ActionList.View {
         presenter.getList()
     }
 
-    override fun setList(actionList: MutableList<Movie>) {
+    override fun setList(actionList: MutableList<Movie>?) {
         this.actionList.clear()
-        this.actionList.addAll(actionList)
-        adapter?.notifyDataSetChanged()
+        actionList?.let {
+            this.actionList.addAll(it)
+            adapter?.notifyDataSetChanged()
+        }
     }
     override fun onDestroy() {
         presenter.kill()

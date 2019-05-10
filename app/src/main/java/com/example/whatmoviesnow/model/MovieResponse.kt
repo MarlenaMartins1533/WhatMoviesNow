@@ -8,6 +8,6 @@ class MovieResponse {
 
     @SerializedName("list_Movies")
     @Expose
-    private var movies: List<Movie>? = null
+    var movies: MutableList<Movie>? = null
 
 }
