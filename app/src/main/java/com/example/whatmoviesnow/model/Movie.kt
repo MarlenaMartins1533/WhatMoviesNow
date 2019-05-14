@@ -22,5 +22,4 @@ class Movie {
         this.movie_title = movie_title
         this.genre_ids = genre_ids
     }
-
 }

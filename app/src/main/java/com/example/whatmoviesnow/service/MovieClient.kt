@@ -25,8 +25,8 @@ class MovieClient {
 
     private lateinit var retrofit: MovieApi
 
-    fun getPopularMovies(apiKey: String, language: String, page: Int): MovieResponse? {
-        val call = retrofit.getPopularMovies("b7998e0023a9f2977d5569934f9d82f1", "LANGUAGE", 1)
+    fun getPopularMovies(page: Int): MovieResponse? {
+        val call = retrofit.getPopularMovies(Constants.AppId, "ENGLISH", page)
 
         try {
             val response = call.execute()

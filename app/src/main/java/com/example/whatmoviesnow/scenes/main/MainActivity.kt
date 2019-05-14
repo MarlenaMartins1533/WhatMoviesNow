@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity(), Scenes.View {
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(toolbar)
-
         sectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager, this)
 
         container.adapter = sectionsPagerAdapter
