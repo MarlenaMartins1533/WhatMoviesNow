@@ -1,13 +1,13 @@
-package com.example.whatmoviesnow.scenes.actionList
+package com.example.whatmoviesnow.scenes.dramaList
 
 import com.example.whatmoviesnow.model.Movie
 import com.example.whatmoviesnow.scenes.Scenes
 
 
-interface ActionList {
+interface DramaList {
 
     interface View: Scenes.View {
-        fun setList(actionList: MutableList<Movie>?)
+        fun setList(dramaList: MutableList<Movie>?)
     }
 
     interface Presenter: Scenes.Presenter {
@@ -20,7 +20,7 @@ interface ActionList {
 //
 //import android.transition.Scene
 //
-//interface ActionList {
+//interface DramaList {
 //    interface View: Scene.View{ }
 //
 //    interface Presenter: Scene.Presenter{

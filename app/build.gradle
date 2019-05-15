@@ -31,6 +31,7 @@ dependencies {
     def retrofitVer = "2.4.0"
     def coroutineVer = "1.2.0"
     def gsonVer = "2.0.0"
+    def picassoVer = "2.71828"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -41,6 +42,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVer" //retrofit
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVer" //coroutines
     implementation "com.squareup.retrofit2:converter-gson:$gsonVer" //gson
+    implementation "com.squareup.picasso:picasso:$picassoVer" //picasso
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

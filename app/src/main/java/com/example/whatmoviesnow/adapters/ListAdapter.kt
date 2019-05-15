@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.whatmoviesnow.R
+import com.example.whatmoviesnow.data.Constants
 import com.example.whatmoviesnow.model.Movie
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 class ListAdapter (private val movies: List<Movie>, //pegar dependendo da tab(action,drama...)
@@ -31,7 +33,8 @@ class ListAdapter (private val movies: List<Movie>, //pegar dependendo da tab(ac
     class ViewHolder (itemView: View): RecyclerView.ViewHolder(itemView) {
 
         fun bindView(movie: Movie) {
-            itemView.movie_titleTXT.text = movie.movie_title
+            itemView.movie_titleTXT.text = movie.title
+            Picasso.get().load(Constants.imageUrl + movie.posterPath).into(itemView.image_movieIMG)
 
 //          itemView.itemCV.setOnClickListener {
 //                if (!movie.seeDetails) {

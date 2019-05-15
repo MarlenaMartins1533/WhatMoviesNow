@@ -1,8 +1,7 @@
 package com.example.whatmoviesnow.scenes.actionList
 
-import com.example.whatmoviesnow.R
+import com.example.whatmoviesnow.data.Constants
 import com.example.whatmoviesnow.model.Movie
-import com.example.whatmoviesnow.service.MovieClient
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
@@ -11,14 +10,21 @@ class ActionListPresenter (val view:ActionList.View): ActionList.Presenter, Coro
     override val coroutineContext: CoroutineContext = Dispatchers.Main + SupervisorJob()
     private var job: Job? = null
 
-    override fun getList() {
 
-        job = launch {
-            view.setList(withContext(Dispatchers.IO) { MovieClient.instance.getPopularMovies(1)?.movies })
+    override fun getList(): MutableList<Movie> {
+        val actionList = mutableListOf<Movie>()
+
+        Constants.movieList.forEach{ movie ->
+            movie.genreIds?.forEach{ id ->
+                if (id == Constants.actionId) {
+                    actionList.add(movie)
+                }
+            }
         }
+        return actionList
+
     }
 //        val movie_genre: Int = 1
-//        val actionList: MutableList<Movie> = mutableListOf()
 //        val dramaList: MutableList<Movie> = mutableListOf()
 //
 //        actionList.add(Movie(1, "Velozes e Furiosos", 1))
@@ -32,10 +38,10 @@ class ActionListPresenter (val view:ActionList.View): ActionList.Presenter, Coro
 //        //getList no servidor em MovieClient (getMovies) depois filtra por genre
 //
 ////        actionList.forEach { m ->
-////            m.genre_id
+////            m.genreIds
 ////        }
 //
-////        val result = actionList.filter { m -> m.genre_id == 1 }
+////        val result = actionList.filter { m -> m.genreIds == 1 }
 //
 //        view.setList(actionList)
 //    }

@@ -1,6 +1,7 @@
 package com.example.whatmoviesnow.scenes.main
 
 import android.util.Log
+import com.example.whatmoviesnow.data.Constants
 import com.example.whatmoviesnow.service.MovieClient
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
@@ -22,9 +23,10 @@ class MainPresenter (val view: Main.View): Main.Presenter, CoroutineScope {
     override fun getMoviesList() {
 
         job = launch {
-            val moviesList = withContext(Dispatchers.IO) { MovieClient.instance.getPopularMovies(1)?.movies }
-//            val totalPages = totalPages
-            view.setMoviesList(moviesList)
+            val movieResponse = withContext(Dispatchers.IO) { MovieClient.instance.getPopularMovies(Constants.page) }
+            Constants.totalPages = movieResponse?.totalPages
+
+            view.setMoviesList(movieResponse?.movies)
         }
     }
 

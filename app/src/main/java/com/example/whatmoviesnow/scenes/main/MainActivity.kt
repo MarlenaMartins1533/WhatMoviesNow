@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
+import android.view.View
 import android.widget.Toast
 import com.example.whatmoviesnow.R
 import com.example.whatmoviesnow.data.Constants
@@ -33,8 +34,8 @@ class MainActivity : AppCompatActivity(), Main.View {
 
     override fun setGenreList(genreList: GenreResponse?) {
 
-        Constants.genreList.clear()
         genreList?.genres?.let {
+            Constants.genreList.clear()
             Constants.genreList.addAll(it)
         }
 
@@ -42,21 +43,24 @@ class MainActivity : AppCompatActivity(), Main.View {
             if (g.name == "Action") Constants.actionId = g.id
             if (g.name == "Drama") Constants.dramaId = g.id
             if (g.name == "Fantasy") Constants.fantasyId = g.id
-            if (g.name == "Fiction") Constants.fictionId = g.id
+            if (g.name == "Science Fiction") Constants.fictionId = g.id
         }
+        presenter.getMoviesList()
+    }
 
+    override fun setMoviesList(movieList: MutableList<Movie>?) {
+
+        loadingPB?.visibility = View.GONE
+
+        movieList?.let {
+            Constants.movieList.clear()
+            Constants.movieList.addAll(it)
+        }
         sectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager, this)
         container.adapter = sectionsPagerAdapter
 
         container.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
         tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
-    }
-
-    override fun setMoviesList(MoviesList: MutableList<Movie>?) {
-        Constants.movieList.clear()
-        Constants.movieList.let {
-            Constants.movieList.addAll(it)
-        }
     }
 
     override fun showError(error: String) {

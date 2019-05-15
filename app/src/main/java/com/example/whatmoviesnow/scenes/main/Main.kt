@@ -10,7 +10,7 @@ interface Main {
 
     interface View: Scenes.View {
         fun setGenreList (genreList: GenreResponse?)
-        fun setMoviesList (MoviesList: MutableList<Movie>?)
+        fun setMoviesList (movieList: MutableList<Movie>?)
     }
 
     interface Presenter: Scenes.Presenter {

@@ -17,7 +17,7 @@ class MovieClient {
         fun initialize() {
             instance = MovieClient()
             instance.retrofit = Retrofit.Builder()
-                .baseUrl(Constants.BaseUrl)
+                .baseUrl(Constants.baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(MovieApi::class.java)
@@ -27,7 +27,7 @@ class MovieClient {
     private lateinit var retrofit: MovieApi
 
     fun getPopularMovies(page: Int): MovieResponse? {
-        val call = retrofit.getPopularMovies(Constants.AppId, "pt-BR", page)
+        val call = retrofit.getPopularMovies(Constants.appId, Constants.language, page)
 
         try {
             val response = call.execute()
@@ -46,7 +46,7 @@ class MovieClient {
     }
 
     fun getGenres(): GenreResponse? {
-        val call = retrofit.getGenres(Constants.AppId)
+        val call = retrofit.getGenres(Constants.appId)
 
         try {
             val response = call.execute()

@@ -37,7 +37,7 @@ class ActionListFragment: Fragment(), MovieInterface.View, ActionList.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        presenter.getList()
+        actionList.addAll(presenter.getList())
         adapter = ListAdapter(actionList, this)
 
         val layoutManager = LinearLayoutManager(context)

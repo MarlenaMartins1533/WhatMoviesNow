@@ -5,21 +5,25 @@ import com.google.gson.annotations.SerializedName
 class Movie {
 
     @SerializedName("id")
-    var movie_id: Int = 0
+    var id: Int = 0
 
     @SerializedName("title")
-    var movie_title: String? = null
+    var title: String? = null
 
-    @SerializedName("genre_id")
-    var genre_id: Int? = null
+    @SerializedName("genre_ids")
+    var genreIds: List<Int>? = null
+
+    @SerializedName("poster_path")
+    var posterPath: String? = null
 
     var seeDetails: Boolean = false
 
     constructor()
-    constructor(movie_id: Int, movie_title: String, genre_id: Int) {
+    constructor(movie_id: Int, movie_title: String, genre_id: List<Int>, poster_path: String) {
 
-        this.movie_id = movie_id
-        this.movie_title = movie_title
-        this.genre_id = genre_id
+        this.id = movie_id
+        this.title = movie_title
+        this.genreIds = genre_id
+        this.posterPath = poster_path
     }
 }

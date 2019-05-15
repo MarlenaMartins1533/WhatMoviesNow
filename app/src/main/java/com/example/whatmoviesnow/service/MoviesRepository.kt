@@ -14,7 +14,7 @@
 //class MoviesRepository private constructor(private val api: MovieApi) {
 //
 //    fun getMovies(callback: Scenes.Presenter) {
-//        api.getMovies(Constants.AppId, "gender")
+//        api.getMovies(Constants.appId, "gender")
 //
 //            .enqueue(object : Callback<MovieResponse> {
 //
@@ -45,7 +45,7 @@
 //            get() {
 //                if (repository == null) {
 //                    val retrofit = Retrofit.Builder()
-//                        .baseUrl(Constants.BaseUrl)
+//                        .baseUrl(Constants.baseUrl)
 //                        .addConverterFactory(GsonConverterFactory.create())
 //                        .build()
 //
