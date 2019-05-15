@@ -4,9 +4,9 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 
-class MovieResponse {
+class GenreResponse {
 
-    @SerializedName("list_Movies")
+    @SerializedName("genres")
     @Expose
-    var movies: MutableList<Movie>? = null
+    var genres: MutableList<Genre>? = null
 }

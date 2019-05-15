@@ -11,16 +11,10 @@ class ActionListPresenter (val view:ActionList.View): ActionList.Presenter, Coro
     override val coroutineContext: CoroutineContext = Dispatchers.Main + SupervisorJob()
     private var job: Job? = null
 
-    override fun onSuccess(movies: List<Movie>) {
-        TODO("not implemented")
-    }
-
     override fun getList() {
 
-        job = launch{
-            val actionList = withContext(Dispatchers.IO){
-                MovieClient.instance.getPopularMovies(1)?.movies}
-            view.setList(actionList)
+        job = launch {
+            view.setList(withContext(Dispatchers.IO) { MovieClient.instance.getPopularMovies(1)?.movies })
         }
     }
 //        val movie_genre: Int = 1
@@ -38,17 +32,13 @@ class ActionListPresenter (val view:ActionList.View): ActionList.Presenter, Coro
 //        //getList no servidor em MovieClient (getMovies) depois filtra por genre
 //
 ////        actionList.forEach { m ->
-////            m.genre_ids
+////            m.genre_id
 ////        }
 //
-////        val result = actionList.filter { m -> m.genre_ids == 1 }
+////        val result = actionList.filter { m -> m.genre_id == 1 }
 //
 //        view.setList(actionList)
 //    }
-
-    override fun onError() {
-         view.showError(R.string.error.toString())
-    }
 
     override fun kill(){
         job?.cancel()

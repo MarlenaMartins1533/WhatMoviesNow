@@ -10,7 +10,7 @@ import com.example.whatmoviesnow.R
 class DramaListFragment: Fragment() {
 
     companion object {
-        fun newInstance(): DramaListFragment { return DramaListFragment() }
+        fun newInstance(dramaId: Int): DramaListFragment { return DramaListFragment() }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

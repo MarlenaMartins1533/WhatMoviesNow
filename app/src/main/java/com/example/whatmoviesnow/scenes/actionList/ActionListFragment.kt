@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_movie_list.*
 class ActionListFragment: Fragment(), MovieInterface.View, ActionList.View {
 
     companion object {
-        fun newInstance(): ActionListFragment { return ActionListFragment() }
+        fun newInstance(actionId: Int): ActionListFragment { return ActionListFragment() }
     }
     
     private lateinit var presenter: ActionList.Presenter

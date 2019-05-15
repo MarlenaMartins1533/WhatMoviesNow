@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.example.whatmoviesnow.R
+import com.example.whatmoviesnow.data.Constants
 import com.example.whatmoviesnow.scenes.Scenes
 import com.example.whatmoviesnow.scenes.actionList.ActionListFragment
 import com.example.whatmoviesnow.scenes.dramaList.DramaListFragment
@@ -16,10 +17,10 @@ import com.example.whatmoviesnow.scenes.fictionList.FictionListFragment
  */
 class SectionsPagerAdapter(fm: FragmentManager, val view: Scenes.View) : FragmentPagerAdapter(fm) {
 
-    private val  actionListFragment by lazy { ActionListFragment.newInstance() }
-    private val  dramaListFragment by lazy { DramaListFragment.newInstance() }
-    private val  fantasyListFragment by lazy { FantasyListFragment.newInstance() }
-    private val  fictionListFragment by lazy { FictionListFragment.newInstance() }
+    private val actionListFragment by lazy { ActionListFragment.newInstance(Constants.actionId) }
+    private val dramaListFragment by lazy { DramaListFragment.newInstance(Constants.dramaId) }
+    private val fantasyListFragment by lazy { FantasyListFragment.newInstance(Constants.fantasyId) }
+    private val fictionListFragment by lazy { FictionListFragment.newInstance(Constants.fictionId) }
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
