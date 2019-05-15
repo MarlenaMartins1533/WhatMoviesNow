@@ -1,5 +1,6 @@
 package com.example.whatmoviesnow.scenes.actionList
 
+import com.example.whatmoviesnow.data.Cache
 import com.example.whatmoviesnow.data.Constants
 import com.example.whatmoviesnow.model.Movie
 import kotlinx.coroutines.*
@@ -14,9 +15,9 @@ class ActionListPresenter (val view:ActionList.View): ActionList.Presenter, Coro
     override fun getList(): MutableList<Movie> {
         val actionList = mutableListOf<Movie>()
 
-        Constants.movieList.forEach{ movie ->
+        Cache.movieList.forEach{ movie ->
             movie.genreIds?.forEach{ id ->
-                if (id == Constants.actionId) {
+                if (id == Cache.actionId) {
                     actionList.add(movie)
                 }
             }

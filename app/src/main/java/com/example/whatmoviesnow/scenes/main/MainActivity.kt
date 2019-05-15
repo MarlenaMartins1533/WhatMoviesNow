@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout
 import android.view.View
 import android.widget.Toast
 import com.example.whatmoviesnow.R
+import com.example.whatmoviesnow.data.Cache
 import com.example.whatmoviesnow.data.Constants
 import com.example.whatmoviesnow.model.GenreResponse
 import com.example.whatmoviesnow.model.Movie
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity(), Main.View {
         presenter = MainPresenter(this)
         presenter.getGenres()
 //colocar o search
+
+
     }
 
     override fun getViewContext(): Context? {
@@ -35,15 +38,15 @@ class MainActivity : AppCompatActivity(), Main.View {
     override fun setGenreList(genreList: GenreResponse?) {
 
         genreList?.genres?.let {
-            Constants.genreList.clear()
-            Constants.genreList.addAll(it)
+            Cache.genreList.clear()
+            Cache.genreList.addAll(it)
         }
 
-         Constants.genreList.forEach {g->
-            if (g.name == "Action") Constants.actionId = g.id
-            if (g.name == "Drama") Constants.dramaId = g.id
-            if (g.name == "Fantasy") Constants.fantasyId = g.id
-            if (g.name == "Science Fiction") Constants.fictionId = g.id
+         Cache.genreList.forEach {g->
+            if (g.name == "Action") Cache.actionId = g.id
+            if (g.name == "Drama") Cache.dramaId = g.id
+            if (g.name == "Fantasy") Cache.fantasyId = g.id
+            if (g.name == "Science Fiction") Cache.fictionId = g.id
         }
         presenter.getMoviesList()
     }
@@ -53,8 +56,8 @@ class MainActivity : AppCompatActivity(), Main.View {
         loadingPB?.visibility = View.GONE
 
         movieList?.let {
-            Constants.movieList.clear()
-            Constants.movieList.addAll(it)
+            Cache.movieList.clear()
+            Cache.movieList.addAll(it)
         }
         sectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager, this)
         container.adapter = sectionsPagerAdapter

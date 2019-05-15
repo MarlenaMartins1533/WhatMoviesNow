@@ -1,5 +1,6 @@
 package com.example.whatmoviesnow.scenes.fantasyList
 
+import com.example.whatmoviesnow.data.Cache
 import com.example.whatmoviesnow.data.Constants
 import com.example.whatmoviesnow.model.Movie
 import kotlinx.coroutines.*
@@ -14,9 +15,9 @@ class FantasyListPresenter (val view:FantasyList.View): FantasyList.Presenter, C
     override fun getList(): MutableList<Movie> {
         val fantasyList = mutableListOf<Movie>()
 
-        Constants.movieList.forEach{ movie ->
+        Cache.movieList.forEach{ movie ->
             movie.genreIds?.forEach{ id ->
-                if (id == Constants.fantasyId) {
+                if (id == Cache.fantasyId) {
                     fantasyList.add(movie)
                 }
             }
@@ -24,7 +25,7 @@ class FantasyListPresenter (val view:FantasyList.View): FantasyList.Presenter, C
         return fantasyList
 
     }
-    
+
     override fun kill(){
         job?.cancel()
     }

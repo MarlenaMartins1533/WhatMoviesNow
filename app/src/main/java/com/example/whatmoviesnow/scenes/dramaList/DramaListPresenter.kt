@@ -1,5 +1,6 @@
 package com.example.whatmoviesnow.scenes.dramaList
 
+import com.example.whatmoviesnow.data.Cache
 import com.example.whatmoviesnow.data.Constants
 import com.example.whatmoviesnow.model.Movie
 import kotlinx.coroutines.*
@@ -14,9 +15,9 @@ class DramaListPresenter (val view:DramaList.View): DramaList.Presenter, Corouti
     override fun getList(): MutableList<Movie> {
         val dramaList = mutableListOf<Movie>()
 
-        Constants.movieList.forEach{ movie ->
+        Cache.movieList.forEach{ movie ->
             movie.genreIds?.forEach{ id ->
-                if (id == Constants.dramaId) {
+                if (id == Cache.dramaId) {
                     dramaList.add(movie)
                 }
             }
